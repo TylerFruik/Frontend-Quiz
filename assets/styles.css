@@ -30,7 +30,7 @@ body {
 }
 
 /* BUTTONS */
-.btn {
+.answer-btn {
     border: none;
     background-color: var(--secondary);
     border-radius: 20px;
@@ -45,7 +45,7 @@ body {
     transition: filter 0.4s ease;
 }
   
-.btn:hover {
+.answer-btn:hover {
     filter: brightness(1);
 }
 
@@ -61,6 +61,7 @@ header h1 {
 }
 
 .card {
+    position: relative;
     background-color: #272525;
     border-radius: 5px;
     border-width: 1px;
@@ -104,7 +105,7 @@ header h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -80%;
+    margin-top: -40%;
 }
 
 .time-label {
@@ -126,10 +127,61 @@ header h1 {
     border-top: solid var(--primary) 2px;
 }
 
-#quit-button {
+.quit-btn {
     position: absolute;
+    border: none;
+    background-color: var(--secondary);
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+    color: hsl(0, 0%, 100%);
     font-size: small;
-    padding: 4px;
     bottom: 10%;
+    margin: 10px;
+    padding: 4px;
+    text-align: center;
     align-self: center;
+    cursor: pointer;
+    filter: brightness(0.6);
+    transition: filter 0.4s ease;
+}
+
+.quit-btn:hover {
+    filter: brightness(1);
+}
+
+/* MAIN MENU */
+.main-menu {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.main-menu h1 {
+    font-size: xx-large;
+}
+
+.main-menu-btn {
+    border: none;
+    background-color: var(--secondary);
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+    color: hsl(0, 0%, 100%);
+    margin: 10px;
+    padding: 14px 20px;
+    text-align: center;
+    align-self: center;
+    cursor: pointer;
+    filter: brightness(0.6);
+    transition: filter 0.4s ease
+}
+
+.main-menu-btn:hover {
+    filter: brightness(1);
+}
+
+#start-quiz {
+    font-size: xxx-large;
+    padding: 30px;
+    margin: 20px
 }
