@@ -41,44 +41,6 @@ header h1 {
     margin: 20px;
 }
 
-
-/* MAIN MENU */
-.main-menu {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-flow: column wrap;
-    text-align: center;
-}
-
-.main-menu h1 {
-    font-size: xx-large;
-}
-
-.main-menu-btn {
-    border: none;
-    background-color: var(--secondary);
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
-    color: hsl(0, 0%, 100%);
-    align-self: center;
-    margin: 10px;
-    padding: 14px 20px;
-    cursor: pointer;
-    filter: brightness(0.6);
-    transition: filter 0.4s ease
-}
-
-.main-menu-btn:hover {
-    filter: brightness(1);
-}
-
-#start-quiz {
-    font-size: xxx-large;
-    padding: 30px;
-    margin: 20px
-}
-
 /* GAME */
 .game {
     position: relative;
@@ -100,6 +62,17 @@ header h1 {
 .left {
     display: flex;
     flex-flow: column wrap;
+}
+
+.question-header {
+    display: inline-block;
+    font-size: larger;
+    border-bottom: solid var(--primary) 2px;
+    padding: 5px;
+}
+
+.question-text {
+    padding-top: 10px;
 }
 
 .answers {
@@ -184,9 +157,49 @@ header h1 {
     filter: brightness(1);
 }
 
+/* MAIN MENU */
+.main-menu {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+}
+
+.menu-btn {
+    border: none;
+    background-color: var(--secondary);
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+    color: hsl(0, 0%, 100%);
+    align-self: center;
+    margin: 10px;
+    padding: 14px 20px;
+    cursor: pointer;
+    filter: brightness(0.6);
+    transition: filter 0.4s ease
+}
+
+.menu-btn:hover {
+    filter: brightness(1);
+}
+
+.msg {
+    font-size: xx-large;
+}
+
+#start-quiz {
+    font-size: xxx-large;
+    padding: 30px;
+    margin: 20px
+}
 
 /* GAME START */
 .game {
+    display: none;
+}
+
+.high-scores-menu {
     display: none;
 }
 
