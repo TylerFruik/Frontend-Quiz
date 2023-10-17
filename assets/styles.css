@@ -160,7 +160,6 @@ header h1 {
 /* MAIN MENU */
 .main-menu {
     position: relative;
-    z-index: 1;
     display: flex;
     flex-flow: column wrap;
     text-align: center;
@@ -194,12 +193,48 @@ header h1 {
     margin: 20px
 }
 
+/* HIGH SCORES MENU */
+.high-scores-menu {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    font-size: xxxx-large;
+    color: var(--secondary);
+}
+
+/* GAME OVER MENU */
+.game-over-menu{
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+}
+
+.game-over-menu .quit-btn {
+    position: relative;
+    font-size: large;
+    padding: 20px;
+}
+
+#save-score {
+    font-size: xxx-large;
+}
+
+.final-score {
+    padding: 30px;
+}
+
 /* GAME START */
 .game {
     display: none;
 }
 
 .high-scores-menu {
+    display: none;
+}
+
+.game-over-menu {
     display: none;
 }
 
