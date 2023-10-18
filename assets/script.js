@@ -23,8 +23,11 @@ const gameOverScore = document.querySelector('.game-over-score');
 const gameOverQuitBtn = document.querySelector('.game-over-quit-btn');
 const gameOverTime = document.querySelector('.game-over-time');
 const enterScoreMenu = document.querySelector('.enter-score-menu');
+const input = document.querySelector('input');
+const submitScore = document.getElementById('submit-score');
 let qNum = 1;
-let highScores = [];
+let highScoresArray = [];
+let highScore = {username: 'first', score: '17'};
 let timeLeft = 60;
 let timeInterval;
 let score = 0;
@@ -180,7 +183,7 @@ function setQuestions() {
 function init() {
     const storedHighScores = JSON.parse(localStorage.getItem('highScores'));
     if (storedHighScores !== null) {
-        highScores = storedHighScores;
+        highScoresArray = storedHighScores;
     } else {
         highScoresList.textContent = 'You have no previous scores!'
         highScoresList.style.color = 'var(--secondary)';
@@ -192,7 +195,7 @@ function showMainMenu() {
     game.style.display = 'none';
     highScoresMenu.style.display = 'none';
     gameOver.style.display = 'none';
-    enterScoresMenu.style.display = 'none';
+    enterScoreMenu.style.display = 'none';
 }
 
 function gameStart() {
@@ -267,6 +270,25 @@ function outOfTime() {
     highScoresMenu.style.display = 'none';
 }
 
+function setScore() {
+    localStorage.setItem('userName', input.value);
+    localStorage.setItem('userScore', score);
+}
+
+function printHighScores() {
+    console.log('test');
+    localStorage.setItem('userName', 'test2');
+    localStorage.setItem('userScore', 5);
+    console.log(highScoresArray.length);
+    for (let i = 0; i < highScoresArray.length; i++) {
+    highScore[i].username = localStorage.getItem('userName');
+    highScore[i].score = localStorage.getItem('userScore');
+    highScoresArray[i] = highScore;
+    console.log(i);
+    console.log(highScoresArray.length);
+    }
+}
+
 function gameEnd() {
     game.style.display = 'none';
     highScoresMenu.style.display = 'none';
@@ -276,7 +298,6 @@ function gameEnd() {
     gameOverTime.textContent = timeLeft + 2;
     clearInterval(timeInterval);
 }
-
 // #endregion
 // #region LISTENERS
 answerBtns.forEach(btn => {
@@ -318,11 +339,28 @@ highScoresBtn.addEventListener('click', () => {
     game.style.display = 'none';
     mainMenu.style.display = 'none';
     gameOver.style.display = 'none';
-    enterScoresMenu.style.display = 'none'
+    enterScoreMenu.style.display = 'none'
+    printHighScores();
 })
 
 highScoresReturn.addEventListener('click', () => {
     showMainMenu();
 })
+
+input.addEventListener('keyup', () => {
+    setScore(input);
+})
+
+submitScore.addEventListener('click', () => {
+    highScoresMenu.style.display = 'flex';
+    game.style.display = 'none';
+    mainMenu.style.display = 'none';
+    gameOver.style.display = 'none';
+    enterScoreMenu.style.display = 'none';
+    printHighScores();
+})
 // #endregion 
+
+highScoresArray[0] = highScore;
+
 init()
