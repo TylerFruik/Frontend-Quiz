@@ -30,7 +30,7 @@
                 <div class="counter">
                     <h2 class="time-label">Time</h2>
                     <h2 class="time-counter">60</h2>
-                    <h2 class="score"><span class="scoreNum">0</span> / 20</h2>
+                    <h2 class="score"><span class="score-num">0</span> / 20</h2>
                 </div>
                 <button class="quit-btn">Main Menu</button>
             </div>
@@ -41,17 +41,21 @@
             <button id="high-scores" class="menu-btn">View High Scores</button>
         </div>
         <div class="high-scores-menu">
-            <h1>CURRENTLY UNAVAILABLE</h1>
-            <h1>REFRESH PAGE TO CONTINUE</h1>
+            <h1 class="high-scores-msg">High Scores</h1>
             <div class="high-scores-list">
             </div>
+            <button id="high-scores-return" class="menu-btn">Return</button>
         </div>
         <div class="game-over-menu">
             <h1 class="msg">Quiz completed!</h1>
             <p class="final-score">You got <span class="game-over-score">x</span>/20 right with <span class="game-over-time">x</span> seconds remaining!</p>
             <h2 class="game-over-quip"></h2>
             <button id="save-score" class="menu-btn">Save Score</button>
-            <button class="quit-btn">Main Menu</button>
+            <button class="game-over-quit-btn">Main Menu</button>
+        </div>
+        <div class="enter-score-menu">
+            <h1>Enter your username <br>below to save your score</h1>
+            <input type="text">
         </div>
     </div>
     <script src="./assets/script.js"></script>
