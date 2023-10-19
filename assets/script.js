@@ -202,6 +202,8 @@ function gameStart() {
     score = 0;
     scoreText.textContent = score;
     qNum = 1;
+    input.value = '';
+    console.log(highScoresArray);
     setQuestions();
     shuffleQ();
     countdown();
@@ -279,14 +281,16 @@ function printHighScores() {
     console.log('test');
     localStorage.setItem('userName', 'test2');
     localStorage.setItem('userScore', 5);
-    console.log(highScoresArray.length);
     for (let i = 0; i < highScoresArray.length; i++) {
     highScore[i].username = localStorage.getItem('userName');
     highScore[i].score = localStorage.getItem('userScore');
-    highScoresArray[i] = highScore;
+    highScoresArray[i].username = highScore.username;
+    highScoresArray[i].score = highScore.score;
     console.log(i);
     console.log(highScoresArray.length);
     }
+
+    // use .push to add to the end of an array
 }
 
 function gameEnd() {
@@ -361,6 +365,5 @@ submitScore.addEventListener('click', () => {
 })
 // #endregion 
 
-highScoresArray[0] = highScore;
-
 init()
+printHighScores()
