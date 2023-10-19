@@ -1,4 +1,4 @@
-// #region ELEMENT SELECTORS
+// #region ELEMENT + CLASS SELECTORS
 const timer = document.querySelector('.time-counter');
 const answerBtns = document.querySelectorAll('.answer-btn');
 const msg = document.querySelector('.msg');
@@ -25,14 +25,16 @@ const gameOverTime = document.querySelector('.game-over-time');
 const enterScoreMenu = document.querySelector('.enter-score-menu');
 const input = document.querySelector('input');
 const submitScore = document.getElementById('submit-score');
+//#endregion
+// #region VARIABLES
 let qNum = 1;
-let highScoresArray = [];
+let highScoresArray = [ {username: 'TylerF', score: '115'}, {username: 'MollieC', score: '41'}];
 let highScore = {username: 'first', score: '17'};
 let timeLeft = 60;
 let timeInterval;
 let score = 0;
 let quizContent = [];
-//#endregion
+// #endregion
 // #region QUESTIONS
 function setQuestions() {
     quizContent =[
@@ -179,6 +181,9 @@ function setQuestions() {
     ];
 }
 //#endregion
+
+// localStorage.clear();
+
 // #region FUNCTIONS
 function init() {
     const storedHighScores = JSON.parse(localStorage.getItem('highScores'));
@@ -203,7 +208,6 @@ function gameStart() {
     scoreText.textContent = score;
     qNum = 1;
     input.value = '';
-    console.log(highScoresArray);
     setQuestions();
     shuffleQ();
     countdown();
@@ -277,17 +281,30 @@ function setScore() {
     localStorage.setItem('userScore', score);
 }
 
+function addScore() {
+    let thisScore = {username: localStorage.getItem('userName'), score: localStorage.getItem('userScore')}
+    let thisScoreStr = JSON.stringify(thisScore);
+    let thisScoreArray = [thisScoreStr]
+    localStorage.setItem('highScores', thisScoreArray)
+}
+
 function printHighScores() {
-    console.log('test');
     localStorage.setItem('userName', 'test2');
     localStorage.setItem('userScore', 5);
+    
     for (let i = 0; i < highScoresArray.length; i++) {
-    highScore[i].username = localStorage.getItem('userName');
-    highScore[i].score = localStorage.getItem('userScore');
-    highScoresArray[i].username = highScore.username;
-    highScoresArray[i].score = highScore.score;
-    console.log(i);
-    console.log(highScoresArray.length);
+        highScore.username = localStorage.getItem('userName');
+        highScore.score = localStorage.getItem('userScore');
+        highScoresArray[i].username = highScore.username;
+        highScoresArray[i].score = highScore.score;
+
+        const addedScore = document.createElement('div');
+        addedScore.style.display = 'flex';
+        addedScore.style.flex = 'column';
+
+        highScoresList.appendChild(addedScore)
+
+        
     }
 
     // use .push to add to the end of an array
@@ -361,9 +378,9 @@ submitScore.addEventListener('click', () => {
     mainMenu.style.display = 'none';
     gameOver.style.display = 'none';
     enterScoreMenu.style.display = 'none';
+    addScore();
     printHighScores();
 })
 // #endregion 
 
 init()
-printHighScores()
